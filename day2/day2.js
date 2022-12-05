@@ -17,6 +17,7 @@ console.log(
 );
 
 const program = () => {
+  // PART 1
   const answer = data
     .map((round) => {
       switch (round) {
@@ -43,6 +44,36 @@ const program = () => {
     .reduce((acc, score) => acc + score, 0);
 
   console.log(`Your score is: ${answer}!`);
+  console.log(
+    "********************************************************************************************************"
+  );
+  // PART 2
+  const answer2 = data
+    .map((round) => {
+      switch (round) {
+        case "A X":
+          return 3 + 0;
+        case "A Y":
+          return 1 + 3;
+        case "A Z":
+          return 2 + 6;
+        case "B X":
+          return 1 + 0;
+        case "B Y":
+          return 2 + 3;
+        case "B Z":
+          return 3 + 6;
+        case "C X":
+          return 2 + 0;
+        case "C Y":
+          return 3 + 3;
+        case "C Z":
+          return 1 + 6;
+      }
+    })
+    .reduce((acc, score) => acc + score, 0);
+
+  console.log(`It was a mistake, your score is: ${answer2}!`);
   console.log(
     "********************************************************************************************************"
   );
