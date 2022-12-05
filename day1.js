@@ -3,13 +3,15 @@
 
 const { readFileSync } = require("fs");
 
+// PART 1
+
 function syncReadFile(filename) {
   const contents = readFileSync(filename, "utf-8");
   const arr = contents.split(/\r?\n/);
 
   return arr;
 }
-data = syncReadFile("./sample.txt");
+data = syncReadFile("./input.txt");
 console.log(`Input data: ${data}`);
 console.log(`array length: ${data.length}`);
 console.log(
@@ -25,7 +27,6 @@ const program = () => {
   let elfTotal = 0;
   let mostTotal = 0;
   let i = 0;
-  let lastElf = 0;
 
   arr.push("");
 
@@ -57,6 +58,14 @@ const program = () => {
   console.log("Total calories carried by all Elfs");
   console.log(elfs);
   console.log(`Most total calories carried per Elf: ${mostTotal}`);
+
+  // PART 2
+  let top3Total = 0;
+  elfs.sort((a, b) => b - a);
+  for (i = 0; i < 3; i++) {
+    top3Total += elfs[i];
+  }
+  console.log(`Top 3 Elfs carries: ${top3Total} calories`);
 };
 
 program(data);
