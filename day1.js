@@ -10,24 +10,53 @@ function syncReadFile(filename) {
   return arr;
 }
 data = syncReadFile("./sample.txt");
-console.log("****************************************************");
-console.log(data);
+console.log(`Input data: ${data}`);
 console.log(`array length: ${data.length}`);
-console.log("****************************************************");
+console.log(
+  "********************************************************************************************************"
+);
 
 const program = () => {
   const arr = data;
   const elfs = [];
+  const elf = [];
+  let elfItem = [];
+  let elfSum = 0;
+  let elfTotal = 0;
+  let mostTotal = 0;
+  let i = 0;
+  let lastElf = 0;
 
-  arr.map((x) => {
-    const calories = parseInt(x);
+  arr.push("");
+
+  arr.forEach((element, idx) => {
+    const calories = parseInt(element);
+    elf.push(elfSum);
+    elfSum += calories;
+    elfItem.push(calories);
+
     if (isNaN(calories)) {
-      elfs.push("Elf ");
-      console.log("--");
-      console.log(elfs);
+      i++;
+      elfTotal = elf.pop();
+      elfItem.pop();
+      console.log(
+        `Elf no. ${i} carries: [ ${elfItem} ] with ${elfTotal} total calories.`
+      );
+      elfs.push(elfTotal);
+      elfSum = 0;
+
+      elfItem.length = 0;
     }
+
+    mostTotal = Math.max(...elfs);
   });
-  elfs.push("");
+
+  console.log(
+    "********************************************************************************************************"
+  );
+  console.log("Total calories carried by all Elfs");
+  console.log(elfs);
+  console.log(`Most total calories carried per Elf: ${mostTotal}`);
 };
 
 program(data);
